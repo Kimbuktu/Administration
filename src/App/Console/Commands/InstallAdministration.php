@@ -38,13 +38,28 @@ class InstallAdministration extends Command
      */
     public function handle()
     {
-        //Spatie.be Permission Installation
         Artisan::call('vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"');
+        $this->info("Published from PermissionServiceProvider");
+
         Artisan::call('vendor:publish --provider="Kimbuktu\Administration\App\Provider\AdministrationServiceProvider"');
+        $this->info("Published from AdministrationServiceProvider");
+
         Artisan::call('optimize:clear');
         Artisan::call('config:clear');
+        $this->info("Optimized Clean");
+
         Artisan::call('breeze:install');
+        $this->info("Breeze installed.");
+
         Artisan::call('migrate:fresh --seed');
+        $this->info("Migrating fresh");
+
+        exec("npm install");
+        $this->info("Npm requirements installed");
+
+        exec("npm run dev");
+        $this->info("Npm compiler run successfull");
+        
         return 0;
     }
 }
