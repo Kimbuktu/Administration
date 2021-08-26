@@ -1,6 +1,6 @@
 <?php
 
-namespace Kimbuktu\Administration\Providers;
+namespace Kimbuktu\Administration\App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -28,5 +28,5 @@ class AdministrationServiceProvider extends ServiceProvider
         $this->publishes([self::$src . 'config/administration.php' => config_path('administration.php')], config('key') . '-config');
         $this->publishes([self::$src . 'database/seeders/AdministrationSeeder.php' => database_path('seeders/AdministrationSeeder.php')], config('key') . '-seeder');
     }
-    
+
 }
