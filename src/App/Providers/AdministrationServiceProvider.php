@@ -2,6 +2,7 @@
 
 namespace Kimbuktu\Administration\App\Providers;
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 
 class AdministrationServiceProvider extends ServiceProvider
@@ -19,6 +20,11 @@ class AdministrationServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(self::$src . 'routes/web.php');
         $this->loadMigrationsFrom(self::$src . 'database/migrations');
         $this->loadTranslationsFrom(self::$src . 'resources/lang', self::$key);
+        $this->loadViewsFrom(self::$src . 'resources/views', self::$key);
+
+        Artisan::call('vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"');
+        Artisan::call('optimize:clear');
+        Artisan::call('config:clear');
 
         Artisan::call('breeze:install');
         Artisan::call('migrate:fresh --seed');
