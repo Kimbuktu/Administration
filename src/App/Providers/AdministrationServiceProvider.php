@@ -17,7 +17,8 @@ class AdministrationServiceProvider extends ServiceProvider
             $this->publishResources();
             $this->commands(
                 \Laravel\Breeze\Console\InstallCommand::class,
-            )
+                \Kimbuktu\Administration\App\Console\Command\InstallAdministration::class,
+            );
         }
 
         $this->loadRoutesFrom(self::$src . 'routes/web.php');
