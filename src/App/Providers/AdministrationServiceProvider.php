@@ -21,7 +21,7 @@ class AdministrationServiceProvider extends ServiceProvider
     }
 
     public function register(){
-
+        $this->mergeConfigFrom(self::$src . 'Config/administration.php', config('key'));
     }
 
     protected function publishResources(){
