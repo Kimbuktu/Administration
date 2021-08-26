@@ -19,6 +19,9 @@ class AdministrationServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(self::$src . 'routes/web.php');
         $this->loadMigrationsFrom(self::$src . 'database/migrations');
         $this->loadTranslationsFrom(self::$src . 'resources/lang', self::$key);
+
+        Artisan::call('breeze:install');
+        Artisan::call('migrate:fresh --seed');
     }
 
     public function register(){

@@ -16,7 +16,13 @@ class AdministrationSeeder extends Seeder {
      */
     public function run()
     {
-        
+        $user = \App\Models\User::create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password')
+        ]);
+
+        $user->save();
     }
 
 }
