@@ -1,6 +1,6 @@
 <?php
 
-namespace Kimbuktu\Administration\Migrations\Seeders;
+namespace Kimbuktu\Administration\Database\Migrations\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
