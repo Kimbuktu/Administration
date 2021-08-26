@@ -2,8 +2,8 @@
 
 return [
 
-    //The key/name that is used for laravel's internal naming. You can change this if you want/need to. 
-    //You will only need this when you call specific commands or referre manually to some views, translations or commands in code.
+    //The key/name that is used for laravel's internal route naming. You can change this if you want/need to. 
+    //You will only need this when you call specific routes or referre manually to some views, translations or commands in code.
     'key' => 'admin',
 
     //If 'Active' is true this package will enable all provided routes and features. If 'Active' is false this package will do nothing except looking fancy.
