@@ -26,7 +26,7 @@ class AdministrationServiceProvider extends ServiceProvider
         Artisan::call('optimize:clear');
         Artisan::call('config:clear');
 
-        Artisan::call('breeze:install');
+        //Artisan::call('breeze:install');
         Artisan::call('migrate:fresh --seed');
     }
 
