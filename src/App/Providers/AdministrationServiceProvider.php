@@ -15,19 +15,15 @@ class AdministrationServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishResources();
+            $this->commands(
+                \Laravel\Breeze\Console\InstallCommand::class,
+            )
         }
 
         $this->loadRoutesFrom(self::$src . 'routes/web.php');
         $this->loadMigrationsFrom(self::$src . 'database/migrations');
         $this->loadTranslationsFrom(self::$src . 'resources/lang', self::$key);
         $this->loadViewsFrom(self::$src . 'resources/views', self::$key);
-
-        Artisan::call('vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"');
-        Artisan::call('optimize:clear');
-        Artisan::call('config:clear');
-
-        Artisan::call('migrate:fresh --seed');
-        Artisan::call('breeze:install');
     }
 
     public function register(){
