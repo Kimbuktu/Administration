@@ -38,27 +38,18 @@ class InstallAdministration extends Command
      */
     public function handle()
     {
+
+        $prefix = "[Administration]: ";
+
         Artisan::call('vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"');
-        $this->info("Published from PermissionServiceProvider");
+        $this->info($prefix . "Published required files tagged by PermissionServiceProvider of package spatie/laravel-permission");
 
         Artisan::call('vendor:publish --provider="Kimbuktu\Administration\App\Provider\AdministrationServiceProvider"');
-        $this->info("Published from AdministrationServiceProvider");
+        $this->info($prefix . "Published required files tagged by AdministrationServiceProvider of package kimbuktu/administration");
 
         Artisan::call('optimize:clear');
         Artisan::call('config:clear');
-        $this->info("Optimized Clean");
-
-        Artisan::call('breeze:install');
-        $this->info("Breeze installed.");
-
-        Artisan::call('migrate:fresh --seed');
-        $this->info("Migrating fresh");
-
-        exec("npm install");
-        $this->info("Npm requirements installed");
-
-        exec("npm run dev");
-        $this->info("Npm compiler run successfull");
+        $this->info($prefix . "Cache and config cleared");
         
         return 0;
     }
